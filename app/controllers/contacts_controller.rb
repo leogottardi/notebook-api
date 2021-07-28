@@ -43,7 +43,8 @@ class ContactsController < ApplicationController
                                       :email, 
                                       :birthdate, 
                                       :kind_id, 
-                                      phones_attributes: [:number]
+                                      phones_attributes: [:number],
+                                      address_attributes: [:street, :city]
                                     )
     end
 end
