@@ -11,7 +11,7 @@ class Contact < ApplicationRecord
   def as_json(options={})
     super({
       root:true,
-      methods: [:kind_description]
+      methods: [:kind_description, :phones]
     }.merge(options))
   end
 end
