@@ -1,8 +1,10 @@
 class Contact < ApplicationRecord 
   belongs_to :kind
-  
   has_many :phones
-  accepts_nested_attributes_for :phones
+  has_one :address
+  
+  accepts_nested_attributes_for :phones, allow_destroy: true
+  accepts_nested_attributes_for :address
 
   def kind_description 
     self.kind.description
@@ -11,7 +13,11 @@ class Contact < ApplicationRecord
   def as_json(options={})
     super({
       root:true,
-      methods: [:kind_description, :phones]
+      methods: [
+        :kind_description, 
+        :address, 
+        :phones
+      ]
     }.merge(options))
   end
 end
